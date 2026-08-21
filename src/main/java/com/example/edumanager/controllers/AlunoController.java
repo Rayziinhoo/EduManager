@@ -4,6 +4,7 @@ import com.example.edumanager.entities.Aluno;
 import com.example.edumanager.entities.Usuario;
 import com.example.edumanager.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    @ResponseStatus
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Aluno> criar ( @RequestBody Aluno aluno) {
         var alunoBanco = alunoRepository.save(aluno);
         return ResponseEntity.ok(alunoBanco);
