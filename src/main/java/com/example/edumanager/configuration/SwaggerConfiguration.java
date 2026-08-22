@@ -12,7 +12,7 @@ public class SwaggerConfiguration {
     public OpenAPI customOpenAPI(){
 
         return new OpenAPI()
-                .info(new Info().title("EduManager").version("1.0").description("API para aula da 4ª fase!"));
+                .info(new Info().title("EduManager").version("1.0").description("API para currículo!"));
 
     }
 }
