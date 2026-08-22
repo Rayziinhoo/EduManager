@@ -20,7 +20,7 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping
-    @Operation(summary = "Metodo de consulta de lista de usuários!",
+    @Operation(summary = "Método de consulta de lista de usuários!",
             description = "Método responsável de todos os usuarios sem filtro!")
     public ResponseEntity<?> listarTodos(){
 

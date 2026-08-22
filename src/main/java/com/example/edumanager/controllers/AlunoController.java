@@ -17,7 +17,7 @@ public class AlunoController {
     private AlunoRepository alunoRepository;
 
     @GetMapping
-    @Operation(summary = "Metodo de consulta de lista de alunos!",
+    @Operation(summary = "Método de consulta de lista de alunos!",
             description = "Método responsável de todos os alunos sem filtro!")
     public ResponseEntity<?> listarTodos(){
 
