@@ -1,8 +1,11 @@
 package com.example.edumanager.controllers;
 
 import com.example.edumanager.DTOs.LoginRequest;
+import com.example.edumanager.services.TokenService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.SpringVersion;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,14 +19,17 @@ import java.net.HttpURLConnection;
 @Tag(description = "Controller de autenticação!", name = "Autenticação")
 public class AuthController {
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     @Operation(description = "Método de login", summary = "Autenticação de usuário")
     public ResponseEntity<?> login( @RequestBody LoginRequest loginRequest){
 
         if (loginRequest.email().equals("string") && loginRequest.senha().equals("senha")) {
 
-            // Gerar o token
-            return  ResponseEntity.ok("");
+            var token = tokenService.gerarToken(loginRequest.email());
+            return  ResponseEntity.ok(token);
         }
         return ResponseEntity.status(HttpURLConnection.HTTP_UNAUTHORIZED).build();
     }
