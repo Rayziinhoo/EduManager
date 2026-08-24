@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,4 +19,13 @@ public class Nota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
+    public double valor;
+
+    public String tipoAvaliacao;
+
+    public Date dataAvaliacao;
+
+    // FK de aluno
+    // Aguardando o fessor ensinar
 }
