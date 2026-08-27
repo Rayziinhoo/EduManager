@@ -25,4 +25,6 @@ public class Usuario {
     public String senha;
 
     public String email;
+
+    // SENHAS DO BANCO DE DADOS 01091011 Sen@c2023
 }
