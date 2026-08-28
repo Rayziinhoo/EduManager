@@ -30,7 +30,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
 
-    @PostMapping
+    @PostMapping("/cadastro")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation( summary = "Método de criação de usuários!",
             description = "Método responsável em efetuar a criação de novos usuários!")
