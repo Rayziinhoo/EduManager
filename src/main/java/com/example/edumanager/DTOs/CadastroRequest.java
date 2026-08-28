@@ -1,4 +1,4 @@
 package com.example.edumanager.DTOs;
 
-public class CadastroRequest {
+public record CadastroRequest(String nome, String senha, String cpf, String email) {
 }

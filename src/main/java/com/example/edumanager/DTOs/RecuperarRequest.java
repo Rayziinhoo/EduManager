@@ -1,4 +1,4 @@
 package com.example.edumanager.DTOs;
 
-public class RecuperarRequest {
+public record RecuperarRequest (){
 }

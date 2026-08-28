@@ -1,4 +1,4 @@
 package com.example.edumanager.DTOs;
 
-public class EsqueciRequest {
+public record EsqueciRequest() {
 }
