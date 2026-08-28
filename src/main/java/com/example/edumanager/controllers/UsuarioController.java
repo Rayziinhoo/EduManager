@@ -1,5 +1,6 @@
 package com.example.edumanager.controllers;
 
+import com.example.edumanager.DTOs.AtualizarStatusRequest;
 import com.example.edumanager.entities.Usuario;
 import com.example.edumanager.repository.UsuarioRepository;
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,4 +39,21 @@ public class UsuarioController {
         var usuarioBanco = usuarioRepository.save(usuario);
         return ResponseEntity.ok(usuarioBanco);
     }
+    // depois criar para senha
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Void> atualizarStatus(@PathVariable Long id, @RequestBody AtualizarStatusRequest statusRequest) {
+
+        Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
+        if ( usuarioBanco != null ) {
+            usuarioBanco.setStatus(statusRequest.status());
+            usuarioRepository.save(usuarioBanco);
+
+
+            return ResponseEntity.ok().build();
+
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
 }
