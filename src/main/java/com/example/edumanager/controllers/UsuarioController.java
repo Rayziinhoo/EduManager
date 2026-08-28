@@ -16,6 +16,8 @@ import java.util.List;
 @Tag(name = "Usuarios", description = "Grupo de APIs responsável por controlar a estrutura de criação e consulta de usuários do sistema!")
 public class UsuarioController {
 
+
+    // INJENÇÃO DE INDEPENDENCIA
     @Autowired
     private UsuarioRepository usuarioRepository;
 

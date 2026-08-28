@@ -1,7 +1,10 @@
 package com.example.edumanager.services;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +26,6 @@ public class TokenService {
 
     public String gerarToken(String subject){
 
-        try {
-
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
             String token = JWT.create()
@@ -35,9 +36,14 @@ public class TokenService {
 
             return token;
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    }
+
+    public DecodedJWT verificarToken (String token) throws JWTVerificationException {
+        Algorithm algorithm = Algorithm.HMAC256(secret);
+
+        JWTVerifier verificador = JWT.require(algorithm).withIssuer(emissor).build();
+
+        return verificador.verify(token);
     }
 
     private Instant getDataExpiracao() {
