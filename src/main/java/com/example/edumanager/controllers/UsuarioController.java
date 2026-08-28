@@ -1,10 +1,12 @@
 package com.example.edumanager.controllers;
 
 import com.example.edumanager.DTOs.AtualizarStatusRequest;
+import com.example.edumanager.entities.EnumStatusUsuario;
 import com.example.edumanager.entities.Usuario;
 import com.example.edumanager.repository.UsuarioRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.junit.platform.commons.function.Try;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,5 +57,43 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
+
+    @PutMapping("/{id}")
+
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+        try {
+            Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
+            if ( usuarioBanco != null ) {
+                usuarioBanco.setStatus(usuario.getStatus());
+                usuarioBanco.setCpf(usuario.getCpf());
+                usuarioBanco.setEmail(usuario.getEmail());
+                usuarioBanco.setSenha(usuario.getSenha());
+                usuarioBanco.setNome(usuario.getNome());
+                usuarioRepository.save(usuarioBanco);
+
+                return ResponseEntity.ok().build();
+
+            }
+            return ResponseEntity.notFound().build();
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @DeleteMapping("/{id}/excluir")
+    public ResponseEntity<Void> excluir(@PathVariable Long id){
+
+        Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
+        if ( usuarioBanco != null ) {
+            usuarioBanco.setStatus(EnumStatusUsuario.EXCLUIDO);
+            usuarioRepository.save(usuarioBanco);
+
+
+            return ResponseEntity.ok().build();
+
+        }
+        return ResponseEntity.notFound().build();
+    }
 
 }
