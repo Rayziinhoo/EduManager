@@ -33,6 +33,16 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id){
+        Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
+        if ( usuarioBanco != null ) {
+            return ResponseEntity.ok(usuarioBanco);
+        }
+        return ResponseEntity.notFound().build();
+
+    }
+
     @PostMapping("/cadastro")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation( summary = "Método de criação de usuários!",
