@@ -33,7 +33,7 @@ public class AuthController {
 
         var usuarioBanco = usuarioRepository.existsUsuarioByEmailAndSenha(request.email(), request.senha());
 
-        if (request.email().equals("string") && request.senha().equals("senha")) {
+        if (usuarioRepository.existsUsuarioByEmailAndSenha(request.email(), request.senha())) {
 
             var token = tokenService.gerarToken(request.email());
             return  ResponseEntity.ok(new LoginResponse(token));
