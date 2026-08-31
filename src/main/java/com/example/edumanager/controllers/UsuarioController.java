@@ -55,7 +55,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioBanco);
     }
 
-    // depois criar para senha
+
     @PatchMapping("/{id}/senha")
     @Operation(summary = "Método de atualização de senha do usuário!",
             description = "Método responsável por alterar a senha do usuário!")
