@@ -34,6 +34,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Método de consulta de usuário por id!",
+            description = "Método responsável por buscar usuários baseados em seus id!")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id){
         Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
         if ( usuarioBanco != null ) {
@@ -51,8 +53,11 @@ public class UsuarioController {
         var usuarioBanco = usuarioRepository.save(usuario);
         return ResponseEntity.ok(usuarioBanco);
     }
+
     // depois criar para senha
     @PatchMapping("/{id}/status")
+    @Operation(summary = "Método de atualização do status do usuário!",
+            description = "Método responsável por alterar o status do usuário!")
     public ResponseEntity<Void> atualizarStatus(@PathVariable Long id, @RequestBody AtualizarStatusRequest statusRequest) {
 
         Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
@@ -69,7 +74,8 @@ public class UsuarioController {
 
 
     @PutMapping("/{id}")
-
+    @Operation(summary = "Método de atualização total do usuário!",
+            description = "Método responsável por alterar qualquer aspecto dado do usuário!")
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
             Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
@@ -92,6 +98,9 @@ public class UsuarioController {
 
 
     @DeleteMapping("/{id}/excluir")
+
+    @Operation(summary = "Método de exclusão de usuário!",
+            description = "Método responsável excluir usuários!")
     public ResponseEntity<Void> excluir(@PathVariable Long id){
 
         Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
