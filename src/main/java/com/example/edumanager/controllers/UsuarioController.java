@@ -1,5 +1,6 @@
 package com.example.edumanager.controllers;
 
+import com.example.edumanager.DTOs.AtualizarSenhaRequest;
 import com.example.edumanager.DTOs.AtualizarStatusRequest;
 import com.example.edumanager.entities.EnumStatusUsuario;
 import com.example.edumanager.entities.Usuario;
@@ -55,6 +56,23 @@ public class UsuarioController {
     }
 
     // depois criar para senha
+    @PatchMapping("/{id}/senha")
+    @Operation(summary = "Método de atualização de senha do usuário!",
+            description = "Método responsável por alterar a senha do usuário!")
+    public ResponseEntity<Void> atualizarSenha(@PathVariable Long id, @RequestBody AtualizarSenhaRequest senhaRequest) {
+
+        Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
+        if ( usuarioBanco != null ) {
+            usuarioBanco.setSenha(String.valueOf(senhaRequest.senha()));
+            usuarioRepository.save(usuarioBanco);
+
+
+            return ResponseEntity.ok().build();
+
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @PatchMapping("/{id}/status")
     @Operation(summary = "Método de atualização do status do usuário!",
             description = "Método responsável por alterar o status do usuário!")
