@@ -32,5 +32,7 @@ public class Turma {
 
     private String disciplina;
 
+    private EnumStatusTurma status = EnumStatusTurma.ABERTA;
+
     // FK de usuario
 }
