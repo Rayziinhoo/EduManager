@@ -18,21 +18,23 @@ public class Aluno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
-    public String nome;
+    private String nome;
 
-    public String CPF;
+    private String CPF;
 
-    public String email;
+    private String email;
 
-    public Date dataNascimento;
+    private Date dataNascimento;
 
     public String matricula;
 
-    public Date dataMatricula;
+    private Date dataMatricula;
 
-    public String telefone;
+    private String telefone;
+
+    private EnumStatusAluno status = EnumStatusAluno.APROVADO;
 
     // FK de turma
 }

@@ -18,19 +18,19 @@ public class Turma {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
-    public String nome;
+    private String nome;
 
-    public Year ano;
+    private Year ano;
 
-    public int trimestre;
+    private int trimestre;
 
-    public String turno;
+    private String turno;
 
-    public String sala;
+    private String sala;
 
-    public String disciplina;
+    private String disciplina;
 
     // FK de usuario
 }

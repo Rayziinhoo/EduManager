@@ -18,13 +18,13 @@ public class Nota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
-    public double valor;
+    private double valor;
 
-    public String tipoAvaliacao;
+    private String tipoAvaliacao;
 
-    public Date dataAvaliacao;
+    private Date dataAvaliacao;
 
     // FK de aluno
     // Aguardando o fessor ensinar
