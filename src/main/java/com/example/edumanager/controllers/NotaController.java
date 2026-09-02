@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/notas")
-@Tag(name = "Turmas", description = "Grupo de APIs responsável por controlar a estrutura de criação e consulta de turmas do sistema!")
+@Tag(name = "Notas", description = "Grupo de APIs responsável por controlar a estrutura de criação e consulta de notas do sistema!")
 public class NotaController {
 
     @Autowired
