@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
-@Tag(name = "Usuarios", description = "Grupo de APIs responsável por controlar a estrutura de criação e consulta de usuários do sistema!")
+@Tag(name = "Usuarios", description = "Grupo de APIs responsável por controlar a estrutura de criação, consulta, alteração e exclusão de usuários do sistema!")
 public class UsuarioController {
 
 

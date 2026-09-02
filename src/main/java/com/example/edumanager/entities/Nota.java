@@ -22,9 +22,11 @@ public class Nota {
 
     private double valor;
 
-    private String tipoAvaliacao;
+    private EnumStatusTipoAvaliacao tipoAvaliacao;
 
     private Date dataAvaliacao;
+
+    private double media;
 
     // FK de aluno
     // Aguardando o fessor ensinar

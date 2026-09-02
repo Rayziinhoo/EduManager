@@ -34,5 +34,5 @@ public class Turma {
 
     private EnumStatusTurma status = EnumStatusTurma.ABERTA;
 
-    // FK de usuario
+    // FK de turmaDisciplina
 }

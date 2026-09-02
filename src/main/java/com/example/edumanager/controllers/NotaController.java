@@ -1,5 +1,7 @@
 package com.example.edumanager.controllers;
 
+import com.example.edumanager.entities.EnumStatusTipoAvaliacao;
+import com.example.edumanager.entities.EnumStatusUsuario;
 import com.example.edumanager.entities.Nota;
 import com.example.edumanager.entities.Usuario;
 import com.example.edumanager.repository.NotaRepository;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/notas")
-@Tag(name = "Notas", description = "Grupo de APIs responsável por controlar a estrutura de criação e consulta de notas do sistema!")
+@Tag(name = "Notas", description = "Grupo de APIs responsável por controlar a estrutura de criação, consulta, alteração e exclusão de notas do sistema!")
 public class NotaController {
 
     @Autowired
@@ -45,5 +47,44 @@ public class NotaController {
         }
         return ResponseEntity.notFound().build();
 
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Método de atualização total da nota!",
+            description = "Método responsável por alterar qualquer dado da nota!")
+    public ResponseEntity<Nota> atualizar(@PathVariable Long id, @RequestBody Nota nota) {
+        try {
+            Nota notaBanco = notaRepository.findById(id).orElse(null);
+            if ( notaBanco != null ) {
+                notaBanco.setValor(nota.getValor());
+                notaBanco.setTipoAvaliacao(nota.getTipoAvaliacao());
+                notaBanco.setDataAvaliacao(nota.getDataAvaliacao());
+                // verificar como fazer a media
+                notaRepository.save(notaBanco);
+
+                return ResponseEntity.ok().build();
+
+            }
+            return ResponseEntity.notFound().build();
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @DeleteMapping("/{id}/excluir")
+    @Operation(summary = "Método de exclusão de nota!",
+            description = "Método responsável excluir notas!")
+    public ResponseEntity<Void> excluir(@PathVariable Long id){
+
+        Nota notaBanco = notaRepository.findById(id).orElse(null);
+        if ( notaBanco != null ) {
+            notaBanco.setTipoAvaliacao(EnumStatusTipoAvaliacao.INVALIDA);
+            notaRepository.save(notaBanco);
+
+
+            return ResponseEntity.ok().build();
+
+        }
+        return ResponseEntity.notFound().build();
     }
 }
