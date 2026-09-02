@@ -4,6 +4,7 @@ import com.example.edumanager.entities.Nota;
 import com.example.edumanager.entities.Usuario;
 import com.example.edumanager.repository.NotaRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/notas")
+@Tag(name = "Turmas", description = "Grupo de APIs responsável por controlar a estrutura de criação e consulta de turmas do sistema!")
 public class NotaController {
 
     @Autowired
