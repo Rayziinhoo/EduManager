@@ -24,7 +24,7 @@ public class Turma {
 
     private Year ano;
 
-    private int trimestre;
+    private String periodo;
 
     private String turno;
 

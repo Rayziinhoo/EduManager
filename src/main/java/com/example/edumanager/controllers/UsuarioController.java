@@ -93,7 +93,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Método de atualização total do usuário!",
-            description = "Método responsável por alterar qualquer aspecto dado do usuário!")
+            description = "Método responsável por alterar qualquer dado do usuário!")
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
             Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
@@ -116,7 +116,6 @@ public class UsuarioController {
 
 
     @DeleteMapping("/{id}/excluir")
-
     @Operation(summary = "Método de exclusão de usuário!",
             description = "Método responsável excluir usuários!")
     public ResponseEntity<Void> excluir(@PathVariable Long id){
