@@ -31,7 +31,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 || uri.startsWith("webjars")
                 || uri.startsWith("/auth/login")
                 || uri.startsWith("/usuarios/cadastro")
-                || uri.startsWith("/recuperacao/conta")
+                || uri.startsWith("/recup/conta")
 
         ){
             filterChain.doFilter(request,response);

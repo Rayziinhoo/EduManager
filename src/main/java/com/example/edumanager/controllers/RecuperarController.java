@@ -18,8 +18,8 @@ import java.net.HttpURLConnection;
 
 // controler para recuperar conta
 @RestController
-@RequestMapping("/recuperacao")
-@Tag(description = "Controller de recuperação!", name = "Recuperação")
+@RequestMapping("/recup")
+@Tag( name = "Autenticação")
 public class RecuperarController {
 
     @Autowired

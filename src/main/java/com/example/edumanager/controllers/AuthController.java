@@ -18,7 +18,7 @@ import java.net.HttpURLConnection;
 
 @RestController
 @RequestMapping("/auth")
-@Tag(description = "Controller de autenticação!", name = "Autenticação")
+@Tag(description = "Autenticação, recuperação de conta/senha do usuario!", name = "Autenticação")
 public class AuthController {
 
     @Autowired
