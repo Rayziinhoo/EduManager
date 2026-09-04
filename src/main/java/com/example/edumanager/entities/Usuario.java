@@ -31,7 +31,7 @@ public class Usuario {
     // SENHAS DO BANCO DE DADOS 01091011 Sen@c2023
 
     // organizar os controller por ordem alphabetica
-    //springdoc.swagger-ui.tagsSorter=alpha
+    // springdoc.swagger-ui.tagsSorter=alpha
     // organizar os métodos por ordem alphabetica
    // springdoc.swagger-ui.operationsSorter=alpha
 }
