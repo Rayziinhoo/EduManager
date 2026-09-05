@@ -1,4 +1,15 @@
+'use client'
+
+import { useRouter } from "next/navigation";
+
 export default function Login() {
+    
+    const router = useRouter();
+
+    const handlerLogin = async(formData: FormData) => {
+        
+        router.push("/home")
+    }
 
     return(
         <div className="min-h-screen flex items-center justify-center bg-blue-50">
@@ -7,9 +18,9 @@ export default function Login() {
                     <h1 className="text-2xl font-bold text-blue-900">
                         Entrar no Sistema
                     </h1>
-                    <p className="test-sm text-slate-900">Insira suas credenciais para acessar o painel</p>
+                    <p className="text-sm text-slate-900">Insira suas credenciais para acessar o painel</p>
                 </div>
-                <form className="flex flex-col gap-4">
+                <form action={handlerLogin} className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-medium text-blue-900">
                             E-MAIL

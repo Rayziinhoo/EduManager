@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
@@ -300,13 +301,10 @@ export default function Home() {
         </span>
       </div>
 
-      {/* Botão de Login */}
-      <a
-        href="/login"
+      {/* Botão de Login */}    
+      <Link href="/login"
         className="px-6 py-2.5 bg-[#0A192F] hover:bg-[#1E3A8A] text-white font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
-      >
-        Entrar
-      </a>
+      > Entrar</Link>
     </div>
   </header>
 
