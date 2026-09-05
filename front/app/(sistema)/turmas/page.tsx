@@ -1,11 +1,11 @@
 import Link from "next/link"
 
-export default function Alunos(){
+export default function Turmas(){
 
     return(<div className="min-h-screen bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-bold text-purple-900">Gestão de alunos</h1>
-            <Link href="/alunos/novo" className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Novo aluno</Link>        
+            <h1 className="text-2xl font-bold text-purple-900">Gestão de turmas</h1>
+            <Link href="/turmas/novo" className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Nova Turma</Link>        
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg border border-blue-900/20 overflow-hidden">
@@ -20,28 +20,22 @@ export default function Alunos(){
             Nome
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Senha
+            Ano
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            CPF
+            Periodo
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Email
+            Turno
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Data de Nascimento
+            Sala
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Matricula
-        </th>
-        <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Data da Matricula
+            Disciplina
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
             Status
-        </th>
-        <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Situação
         </th>
     </tr>
 </thead>
@@ -55,28 +49,22 @@ export default function Alunos(){
             Ray
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            ********
+            2026
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            000.000.000-00
+            1º
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            ray@email.com
+            Matutino
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            01/01/2000
+            Sala 01
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            20260001
-        </td>
-        <td className="px-4 py-3 text-sm text-slate-900">
-            05/09/2026
+            Matemática
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
             Ativo
-        </td>
-        <td className="px-4 py-3 text-sm text-slate-900">
-            Regular
         </td>
     </tr>
 </tbody>

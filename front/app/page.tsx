@@ -270,14 +270,14 @@ const styles: { [key: string]: React.CSSProperties } = {
 
 export default function Home() {
   return (
-  <div className="min-h-screen bg-[#F0F8FF] text-[#0A192F] font-sans antialiased selection:bg-[#B0E0E6]">
+  <div className="min-h-screen bg-cyan-50 text-purple-900 font-sans antialiased selection:bg-cyan-200">
   {/* HEADER / NAVBAR */}
-  <header className="sticky top-0 z-50 bg-[#F0F8FF]/90 backdrop-blur-md border-b border-[#B0E0E6]/40">
+  <header className="sticky top-0 z-50 bg-cyan-50/90 backdrop-blur-md border-b border-blue-900/20">
     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       
       {/* Logo: Lápis e Caderno em SVG */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#0A192F] rounded-xl flex items-center justify-center text-[#89CFF0] shadow-md">
+        <div className="w-10 h-10 bg-purple-900 rounded-xl flex items-center justify-center text-cyan-400 shadow-md">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 24 24" 
@@ -296,14 +296,14 @@ export default function Home() {
             <path d="M9 14 4 19" />
           </svg>
         </div>
-        <span className="text-2xl font-bold tracking-tight text-[#0A192F]">
-          Edu<span className="text-[#4682B4]">Manager</span>
+        <span className="text-2xl font-bold tracking-tight text-purple-900">
+          Edu<span className="text-orange-800">Manager</span>
         </span>
       </div>
 
       {/* Botão de Login */}    
       <Link href="/login"
-        className="px-6 py-2.5 bg-[#0A192F] hover:bg-[#1E3A8A] text-white font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
+        className="px-6 py-2.5 bg-purple-900 hover:bg-purple-800 text-white font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
       > Entrar</Link>
     </div>
   </header>
@@ -311,10 +311,10 @@ export default function Home() {
   {/* HERO SECTION */}
   <section className="max-w-7xl mx-auto px-6 pt-16 pb-20 grid lg:grid-cols-2 gap-12 items-center">
     <div className="space-y-6">
-      <span className="inline-block px-4 py-1.5 bg-[#B0E0E6]/40 text-[#0A192F] font-semibold text-sm rounded-full">
+      <span className="inline-block px-4 py-1.5 bg-cyan-100 text-purple-900 font-semibold text-sm rounded-full">
         Tecnologia com propósito social
       </span>
-      <h1 className="text-4xl lg:text-5xl font-extrabold text-[#0A192F] leading-tight">
+      <h1 className="text-4xl lg:text-5xl font-extrabold text-purple-900 leading-tight">
         Mais tempo para ensinar, menos burocracia na sala de aula.
       </h1>
       <p className="text-lg text-[#334155] leading-relaxed">
@@ -337,19 +337,19 @@ export default function Home() {
     </div>
 
     {/* Card Ilustrativo de Funcionalidade */}
-    <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#B0E0E6]/30 relative">
-      <div className="absolute -top-3 -right-3 bg-[#89CFF0] text-[#0A192F] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+    <div className="bg-white p-8 rounded-3xl shadow-xl border border-blue-900/10 relative">
+      <div className="absolute -top-3 -right-3 bg-orange-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
         Simplicidade
       </div>
-      <h3 className="text-xl font-bold text-[#0A192F] mb-4">Lançamento Rápido de Notas</h3>
+      <h3 className="text-xl font-bold text-purple-900 mb-4">Lançamento Rápido de Notas</h3>
       <div className="space-y-3 font-mono text-sm">
-        <div className="p-3 bg-[#F0F8FF] rounded-lg flex justify-between items-center">
+        <div className="p-3 bg-cyan-50 rounded-lg flex justify-between items-center">
           <span>Turma: 8º Ano A</span>
-          <span className="text-xs bg-[#0A192F] text-white px-2 py-0.5 rounded">Ativa</span>
+          <span className="text-xs bg-purple-900 text-white px-2 py-0.5 rounded">Ativa</span>
         </div>
-        <div className="p-3 bg-[#F0F8FF] rounded-lg flex justify-between items-center">
+        <div className="p-3 bg-cyan-50 rounded-lg flex justify-between items-center">
           <span>Aluno: Lucas Silva</span>
-          <span className="font-bold text-[#0A192F]">Média: 8.5</span>
+          <span className="font-bold text-purple-900">Média: 8.5</span>
         </div>
         <div className="p-3 bg-[#E6F4EA] text-[#137333] rounded-lg flex justify-between items-center font-bold">
           <span>Status Final</span>
@@ -360,31 +360,31 @@ export default function Home() {
   </section>
 
   {/* NOSSA HISTÓRIA E PROPÓSITO */}
-  <section id="historia" className="bg-white py-20 border-t border-[#B0E0E6]/30">
+  <section id="historia" className="bg-white py-20 border-t border-blue-900/10">
     <div className="max-w-5xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-3xl font-bold text-[#0A192F] mb-4">Nossa História &amp; Propósito</h2>
+        <h2 className="text-3xl font-bold text-purple-900 mb-4">Nossa História &amp; Propósito</h2>
         <p className="text-base text-[#475569] leading-relaxed">
           O EduManager nasceu da certeza de que qualquer empenho faz a diferença na educação. Acreditamos no uso consciente da tecnologia para unir pessoas, reduzindo o tempo nas telas e priorizando a convivência em sala.
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="p-8 bg-[#F0F8FF] rounded-2xl border border-[#B0E0E6]/40">
-          <div className="w-12 h-12 bg-[#0A192F] text-[#89CFF0] rounded-xl flex items-center justify-center font-bold text-xl mb-6">
+        <div className="p-8 bg-cyan-50 rounded-2xl border border-blue-900/20">
+          <div className="w-12 h-12 bg-purple-900 text-cyan-400 rounded-xl flex items-center justify-center font-bold text-xl mb-6">
             01
           </div>
-          <h3 className="text-xl font-bold text-[#0A192F] mb-3">Agilidade para o Professor</h3>
+          <h3 className="text-xl font-bold text-purple-900 mb-3">Agilidade para o Professor</h3>
           <p className="text-sm text-[#334155] leading-relaxed">
             Desenvolvido para que os professores lancem notas apenas de seus alunos matriculados de forma rápida. O sistema calcula a soma, a média e indica a aprovação ou reprovação instantaneamente.
           </p>
         </div>
 
-        <div className="p-8 bg-[#F0F8FF] rounded-2xl border border-[#B0E0E6]/40">
-          <div className="w-12 h-12 bg-[#0A192F] text-[#89CFF0] rounded-xl flex items-center justify-center font-bold text-xl mb-6">
+        <div className="p-8 bg-cyan-50 rounded-2xl border border-blue-900/20">
+          <div className="w-12 h-12 bg-purple-900 text-cyan-400 rounded-xl flex items-center justify-center font-bold text-xl mb-6">
             02
           </div>
-          <h3 className="text-xl font-bold text-[#0A192F] mb-3">Boletins Sem Atraso</h3>
+          <h3 className="text-xl font-bold text-purple-900 mb-3">Boletins Sem Atraso</h3>
           <p className="text-sm text-[#334155] leading-relaxed">
             Eliminamos a espera demorada pela emissão de notas. O professor consegue imprimir os boletins com alta frequência e entregar retornos ágeis aos alunos e familiares.
           </p>
@@ -394,9 +394,9 @@ export default function Home() {
   </section>
 
   {/* FUTURO / VISÃO */}
-  <section className="bg-[#0A192F] text-white py-16">
+  <section className="bg-black text-white py-16">
     <div className="max-w-4xl mx-auto px-6 text-center space-y-4">
-      <h2 className="text-2xl font-bold text-[#89CFF0]">O que vem por aí</h2>
+      <h2 className="text-2xl font-bold text-cyan-400">O que vem por aí</h2>
       <p className="text-gray-300 max-w-2xl mx-auto text-sm leading-relaxed">
         Estamos começando com uma ferramenta simples e objetiva para registro de notas. No futuro, os alunos poderão visualizar seus boletins diretamente na palma da mão, em qualquer lugar.
       </p>
@@ -404,7 +404,7 @@ export default function Home() {
   </section>
 
   {/* FOOTER */}
-  <footer className="bg-[#071120] text-gray-400 py-8 border-t border-gray-800">
+  <footer className="bg-black text-gray-400 py-8 border-t border-gray-800">
     <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
       <p>© {new Date().getFullYear()} EduManager. Todos os direitos reservados.</p>
       <p className="text-gray-500">Inclusão digital simples para quem faz a diferença.</p>
