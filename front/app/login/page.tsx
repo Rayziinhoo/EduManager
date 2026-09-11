@@ -1,9 +1,8 @@
-'use client'
+"use client"
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { LoginResponse } from "../types/auth";
-import { debug } from "console";
 
 export default function Login() {
     

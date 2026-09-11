@@ -1,6 +1,30 @@
+"use client"
+import { Turma } from "@/app/types/turma";
+import { useEffect, useState } from "react";
 import Link from "next/link"
+import axios from "axios";
 
 export default function Turmas(){
+
+    const[turmas, setTurmas] = useState<Turma[]>([]);
+    
+    useEffect(()=>{
+        carregarDados();
+    },[]);
+
+    const carregarDados = async() => {
+
+    
+    try {
+    const dados = await axios.get<Turma[]>("http://localhost:8080/turmas")
+        
+        setTurmas( dados.data)
+
+    } catch (error){
+        alert("Erro ao carregar dados")
+
+    }
+}
 
     return(<div className="min-h-screen bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
@@ -41,32 +65,43 @@ export default function Turmas(){
 </thead>
 
 <tbody className="divide-y divide-blue-900/10">
+{turmas.map((turma)=>(
     <tr className="hover:bg-cyan-50">
         <td className="px-4 py-3 text-sm text-slate-900">
-            1
+            {turma.id}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            Ray
+            {turma.nome}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            2026
+            {turma.ano}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            1º
+            {turma.periodo}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            Matutino
+            {turma.turno}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            Sala 01
+            {turma.sala}
+        <td className="px-4 py-3 text-sm text-slate-900">
+            {turma.status}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            Matemática
-        </td>
-        <td className="px-4 py-3 text-sm text-slate-900">
-            Ativo
+            {turma.status}
         </td>
     </tr>
+))}
+                        {turmas.length === 0 &&
+                        (
+                            <tr>
+                                <td colSpan={5} className="px-6 py12 text-center text-slate-900 italic">
+                                    Nenhuma turma encontrada!
+                                </td>
+                            </tr>
+                        )
+
+                        }
 </tbody>
                 </table>
             </div>
