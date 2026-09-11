@@ -3,13 +3,15 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { LoginResponse } from "../types/auth";
+import { debug } from "console";
 
 export default function Login() {
     
     const router = useRouter();
 
     const handlerLogin = async(formData: FormData) => {
-        
+        try {
+        debugger;
         const emailTela = formData.get("email")?.toString() ?? "";
         const senhaTela = formData.get("senha")?.toString() ?? "";
         var loginResposta = await axios.post<LoginResponse>("http://localhost:8080/auth/login",
@@ -17,9 +19,13 @@ export default function Login() {
 
         if(loginResposta.status==200) {
             router.push("/home")
-        }
+        }else{
         alert("Login ou senha Inválido")
     }
+    }catch(error) {
+        alert("Login ou senha Inválido")
+    }
+}
 
     return(
         <div className="min-h-screen flex items-center justify-center bg-cyan-50">
