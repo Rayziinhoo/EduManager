@@ -1,3 +1,4 @@
+// serve para importar o react - será feito pelo usuario - HTML
 "use client"
 import { Usuario } from "@/app/types/usuario"
 import axios from "axios"
@@ -7,8 +8,7 @@ import { useEffect, useState } from "react";
 export default function Usuarios(){
 // todos html nessas estruturas
 // th no thead e td tbory
-// nenhum usuario encontrado
-// colSpan para pular linha
+
 const[usuarios, setUsuarios] = useState<Usuario[]>([]);
 
 useEffect(()=>{
@@ -79,6 +79,8 @@ const carregarDados = async() => {
                             </td>
                         </tr>
                         ))}
+                        {/* nenhum usuario encontrado
+                        colSpan para pular linha */}
                         {usuarios.length === 0 &&
                         (
                             <tr>
