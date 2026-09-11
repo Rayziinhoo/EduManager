@@ -22,7 +22,7 @@ public class Turma {
 
     private String nome;
 
-    private Year ano;
+    private int ano;
 
     private String periodo;
 
