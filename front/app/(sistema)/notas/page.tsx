@@ -1,7 +1,31 @@
 "use client"
+import { Nota } from "@/app/types/nota"
+import axios from "axios";
 import Link from "next/link"
+import { useEffect, useState } from "react";
 
 export default function Notas(){
+
+    const[notas, setNotas] = useState<Nota[]>([]);
+
+useEffect(()=>{
+    carregarDados();
+},[]);
+
+const carregarDados = async() => {
+
+    
+    try {
+    const dados = await axios.get<Nota[]>("http://localhost:8080/notas")
+        
+        setNotas( dados.data)
+
+    } catch (error){
+        alert("Erro ao carregar dados")
+
+    }
+    
+}
 
     return(<div className="min-h-screen bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
@@ -15,7 +39,7 @@ export default function Notas(){
                     <thead className="bg-cyan-100">
                         <tr>
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
-                                Id
+                                Código
                             </th>
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 Valor
@@ -32,23 +56,36 @@ export default function Notas(){
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-blue-900/10">
-                        <tr className="hover:bg-cyan-50">
+                    {notas.map((nota)=>(
+                        <tr key={nota.id} className="hover:bg-cyan-50">
                             <td className="px-4 py-3 text-sm text-slate-900">
-                                1
+                                {nota.id}
                             </td>
                             <td className="px-4 py-3 text-sm text-slate-900">
-                                7.5
+                                {nota.valor}
                             </td>
                             <td className="px-4 py-3 text-sm text-slate-900">
-                                Prova
+                                {nota.status}
                             </td>
                             <td className="px-4 py-3 text-sm text-slate-900">
-                                01/01/2024
+                                {nota.dataAvaliacao}
                             </td>
                             <td className="px-4 py-3 text-sm text-slate-900">
-                                7.5
+                                {nota.media}
                             </td>
                         </tr>
+                        ))}
+
+                        {notas.length === 0 &&
+                        (
+                            <tr>
+                                <td colSpan={5} className="px-6 py12 text-center text-slate-900 italic">
+                                    Nenhuma nota encontrada!
+                                </td>
+                            </tr>
+                        )
+
+                        }
                     </tbody>
                 </table>
             </div>

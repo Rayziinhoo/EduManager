@@ -84,6 +84,7 @@ export default function Turmas(){
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
             {turma.sala}
+        </td>
         <td className="px-4 py-3 text-sm text-slate-900">
             {turma.status}
         </td>

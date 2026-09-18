@@ -1,15 +1,15 @@
-export class Nota{
+export class Aluno{
 
     constructor(
         public id: number | null,
-        public valor: number,
-        public dataAvaliacao: string,
+        public nome: string,
+        public cpf: string,
+        public email: string,
+        public dataNascimento: string,
+        public matricula: string,
+        public dataMatricula: string,
         public status: string,
-        public media: number,
-        public media: number,
-        public media: number,
-        public media: number,
-        public media: number)
+        public situacao: string)
         {        
 
     }

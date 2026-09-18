@@ -1,7 +1,32 @@
-"use cliente"
+"use client"
+import { Aluno } from "@/app/types/aluno";
+import axios from "axios";
 import Link from "next/link"
+import { useEffect, useState } from "react";
 
 export default function Alunos(){
+
+    const[alunos, setAlunos] = useState<Aluno[]>([]);
+
+useEffect(()=>{
+    carregarDados();
+},[]);
+
+
+const carregarDados = async() => {
+
+    
+    try {
+    const dados = await axios.get<Aluno[]>("http://localhost:8080/alunos")
+        
+        setAlunos( dados.data)
+
+    } catch (error){
+        alert("Erro ao carregar dados")
+
+    }
+    
+}
 
     return(<div className="min-h-screen bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
@@ -15,13 +40,10 @@ export default function Alunos(){
                     <thead className="bg-cyan-100">
     <tr>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Id
+            Código
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
             Nome
-        </th>
-        <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Senha
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
             CPF
@@ -48,38 +70,48 @@ export default function Alunos(){
 </thead>
 
 <tbody className="divide-y divide-blue-900/10">
-    <tr className="hover:bg-cyan-50">
+{alunos.map((aluno)=>(
+    <tr key={aluno.id} className="hover:bg-cyan-50">
         <td className="px-4 py-3 text-sm text-slate-900">
-            1
+            {aluno.id}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            Ray
+        {aluno.nome}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            ********
+        {aluno.cpf}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            000.000.000-00
+        {aluno.email}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            ray@email.com
+        {aluno.dataNascimento}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            01/01/2000
+        {aluno.matricula}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            20260001
+        {aluno.dataMatricula}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            05/09/2026
+        {aluno.status}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
-            Ativo
-        </td>
-        <td className="px-4 py-3 text-sm text-slate-900">
-            Regular
+        {aluno.situacao}
         </td>
     </tr>
+    ))}
+
+{alunos.length === 0 &&
+                        (
+                            <tr>
+                                <td colSpan={5} className="px-6 py12 text-center text-slate-900 italic">
+                                    Nenhum aluno encontrado!
+                                </td>
+                            </tr>
+                        )
+
+                        }
 </tbody>
                 </table>
             </div>
