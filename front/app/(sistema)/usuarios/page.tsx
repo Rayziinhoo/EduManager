@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 export default function Usuarios(){
 // todos html nessas estruturas
 // th no thead e td tbory
+// primeiro deixa visual
+// depois fazer a integração
 
 const[usuarios, setUsuarios] = useState<Usuario[]>([]);
 
@@ -30,70 +32,77 @@ const carregarDados = async() => {
     }
     
 }
-    return(<div className="min-h-screen bg-blue-50 p-8">
-        <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-bold text-blue-900">Gestão de usuários</h1>
-            <Link href="/usuarios/novo" className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Novo usuário</Link>        
-        </div>
-        
-        <div className="bg-white rounded-2xl shadow-lg border border-blue-100 overflow-hidden">
-            <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                    <thead className="bg-blue-100">
+    return(<div className="bg-cyan-50 p-8">
+    <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold text-purple-900">Gestão de usuários</h1>
+        <Link href="/usuarios/novo" className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Novo usuário</Link>        
+    </div>
+    
+    <div className="bg-white rounded-2xl shadow-lg border border-blue-900/20 overflow-hidden">
+        <div className="overflow-x-auto">
+            <table className="w-full text-left">
+                <thead className="bg-cyan-100">
+                    <tr>
+                        <th className="px-4 py-3 text-sm font-medium text-purple-900">
+                            Código
+                        </th>
+                        <th className="px-4 py-3 text-sm font-medium text-purple-900">
+                            Nome
+                        </th>
+                        <th className="px-4 py-3 text-sm font-medium text-purple-900">
+                            CPF
+                        </th>
+                        <th className="px-4 py-3 text-sm font-medium text-purple-900">
+                            E-mail
+                        </th>
+                        <th className="px-4 py-3 text-sm font-medium text-purple-900">
+                            Status
+                        </th>
+                        <th className="px-4 py-3 text-sm font-medium text-purple-900">
+                            Ações
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody className="divide-y divide-blue-900/10">
+                    {usuarios.map((usuario)=>(
+                    <tr key={usuario.id} className="hover:bg-cyan-50">
+                        <td className="px-4 py-3 text-sm text-slate-900">
+                            {usuario.id}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-slate-900">
+                            {usuario.nome}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-slate-900">
+                            {usuario.cpf}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-slate-900">
+                            {usuario.email}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-slate-900">
+                            {usuario.status}
+                        </td>
+                        <td className="px-4 py-3 text-sm">
+                            <Link href={`/usuarios/${usuario.id}/editar`} className="text-purple-900 font-medium hover:underline">Editar</Link>
+                            
+                        </td>
+                    </tr>
+                    ))}
+                    {/* nenhum usuario encontrado
+                    colSpan para pular linha */}
+                    {usuarios.length === 0 &&
+                    (
                         <tr>
-                            <th className="px-4 py-3 text-sm font-medium text-blue-900">
-                                Código
-                            </th>
-                            <th className="px-4 py-3 text-sm font-medium text-blue-900">
-                                Nome
-                            </th>
-                            <th className="px-4 py-3 text-sm font-medium text-blue-900">
-                                CPF
-                            </th>
-                            <th className="px-4 py-3 text-sm font-medium text-blue-900">
-                                E-mail
-                            </th>
-                            <th className="px-4 py-3 text-sm font-medium text-blue-900">
-                                Status
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-blue-100">
-                        {usuarios.map((usuario)=>(
-                        <tr key={usuario.id} className="hover:bg-blue-50">
-                            <td className="px-4 py-3 text-sm text-slate-900">
-                                {usuario.id}
-                            </td>
-                            <td className="px-4 py-3 text-sm text-slate-900">
-                                {usuario.nome}
-                            </td>
-                            <td className="px-4 py-3 text-sm text-slate-900">
-                                {usuario.cpf}
-                            </td>
-                            <td className="px-4 py-3 text-sm text-slate-900">
-                                {usuario.email}
-                            </td>
-                            <td className="px-4 py-3 text-sm text-slate-900">
-                                {usuario.status}
+                            <td colSpan={6} className="px-6 py-12 text-center text-slate-900 italic">
+                                Nenhum usuario encontrado!
                             </td>
                         </tr>
-                        ))}
-                        {/* nenhum usuario encontrado
-                        colSpan para pular linha */}
-                        {usuarios.length === 0 &&
-                        (
-                            <tr>
-                                <td colSpan={5} className="px-6 py12 text-center text-slate-900 italic">
-                                    Nenhum usuario encontrado!
-                                </td>
-                            </tr>
-                        )
+                    )
 
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
-    </div>)
+    </div>
+</div>)
 }

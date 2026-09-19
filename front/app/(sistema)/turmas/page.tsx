@@ -26,7 +26,7 @@ export default function Turmas(){
     }
 }
 
-    return(<div className="min-h-screen bg-cyan-50 p-8">
+    return(<div className="bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
             <h1 className="text-2xl font-bold text-purple-900">Gestão de turmas</h1>
             <Link href="/turmas/novo" className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Nova Turma</Link>        
@@ -96,7 +96,7 @@ export default function Turmas(){
                         {turmas.length === 0 &&
                         (
                             <tr>
-                                <td colSpan={5} className="px-6 py12 text-center text-slate-900 italic">
+                                <td colSpan={8} className="px-6 py12 text-center text-slate-900 italic">
                                     Nenhuma turma encontrada!
                                 </td>
                             </tr>

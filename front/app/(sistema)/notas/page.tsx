@@ -27,7 +27,7 @@ const carregarDados = async() => {
     
 }
 
-    return(<div className="min-h-screen bg-cyan-50 p-8">
+    return(<div className="bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
             <h1 className="text-2xl font-bold text-purple-900">Gestão de notas</h1>
             <Link href="/notas/novo" className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Nova nota</Link>        

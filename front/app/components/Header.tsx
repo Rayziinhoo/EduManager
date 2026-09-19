@@ -11,7 +11,7 @@ export default function Header () {
 
                     </svg>
                 </div>
-                <span className="text-sm font-medium text-purple-900"> Usuário Rayrison Ribeiro</span>
+                <span className="text-sm font-medium text-purple-900 font-semibold"> Rayrison Ribeiro</span>
                 <button className="px-4 py-2 bg-orange-800 hover:bg-orange-900 text-white text-sm font-semibold rounded-lg transition-colors">Sair</button>
             </div>
         </header>

@@ -5,7 +5,7 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center text-xs">
                     <p>&copy;{anoAtual}
-                    <span className="text-cyan-400 font-semibold"> Alunasso</span> Todos os direitos reservados.</p>
+                    <span className="text-cyan-400 font-semibold"> Edumanager</span> Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
