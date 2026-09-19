@@ -105,7 +105,7 @@ const carregarDados = async() => {
 {alunos.length === 0 &&
                         (
                             <tr>
-                                <td colSpan={5} className="px-6 py12 text-center text-slate-900 italic">
+                                <td colSpan={9} className="px-6 py12 text-center text-slate-900 italic">
                                     Nenhum aluno encontrado!
                                 </td>
                             </tr>
