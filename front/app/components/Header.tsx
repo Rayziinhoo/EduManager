@@ -22,7 +22,9 @@ export default function Header () {
                     </Link>
                 </div>
                 <span className="text-sm font-medium text-purple-900 font-semibold"> Rayrison Ribeiro</span>
+                <Link href="/login">    
                 <button className="px-4 py-2 bg-orange-800 hover:bg-orange-900 text-white text-sm font-semibold rounded-lg transition-colors">Sair</button>
+                </Link>
             </div>
         </header>
     );

@@ -38,16 +38,10 @@ export default function Turmas(){
                     <thead className="bg-cyan-100">
     <tr>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Id
-        </th>
-        <th className="px-4 py-3 text-sm font-medium text-purple-900">
             Nome
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
             Ano
-        </th>
-        <th className="px-4 py-3 text-sm font-medium text-purple-900">
-            Periodo
         </th>
         <th className="px-4 py-3 text-sm font-medium text-purple-900">
             Turno
@@ -68,16 +62,10 @@ export default function Turmas(){
 {turmas.map((turma)=>(
     <tr className="hover:bg-cyan-50">
         <td className="px-4 py-3 text-sm text-slate-900">
-            {turma.id}
-        </td>
-        <td className="px-4 py-3 text-sm text-slate-900">
             {turma.nome}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
             {turma.ano}
-        </td>
-        <td className="px-4 py-3 text-sm text-slate-900">
-            {turma.periodo}
         </td>
         <td className="px-4 py-3 text-sm text-slate-900">
             {turma.turno}
@@ -96,7 +84,7 @@ export default function Turmas(){
                         {turmas.length === 0 &&
                         (
                             <tr>
-                                <td colSpan={8} className="px-6 py12 text-center text-slate-900 italic">
+                                <td colSpan={6} className="px-6 py12 text-center text-slate-900 italic">
                                     Nenhuma turma encontrada!
                                 </td>
                             </tr>
