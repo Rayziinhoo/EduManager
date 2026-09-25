@@ -32,6 +32,50 @@ const carregarDados = async() => {
     }
     
 }
+
+const handleDeletarUsuario = async(usuario:Usuario) =>{
+
+    var dadosRetorno = await  
+    axios.delete('http://localhost:8080/usuarios/'+usuario.id+'/excluir');
+
+    if(dadosRetorno.status==200){
+        alert("Excluido com sucesso!");
+    }else{
+        alert(dadosRetorno.data);
+
+        return;
+    }
+
+    carregarDados();
+
+}
+
+const handleAlterarStatusUsuario = async(usuario:Usuario) =>{
+
+
+    var novoStatus = {};
+    if(usuario.status ==="ATIVO"){
+        novoStatus = {status:"BLOQUEADO"}
+    }else{
+        novoStatus = {status:"ATIVO"}
+    }
+
+    var dadosRetorno = await  
+    axios.patch('http://localhost:8080/usuarios/'+usuario.id+'/status',novoStatus);
+
+    if(dadosRetorno.status==200){
+        alert("Atulizado status com sucesso!");
+    }else{
+        alert(dadosRetorno.data);
+
+        return;
+    }
+
+    carregarDados();
+
+}
+
+
     return(<div className="bg-cyan-50 p-8">
     <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-purple-900">Gestão de usuários</h1>
@@ -82,10 +126,18 @@ const carregarDados = async() => {
                         <td className="px-4 py-3 text-sm text-slate-900">
                             {usuario.status}
                         </td>
-                        <td className="px-4 py-3 text-sm">
-                            <Link href={`/usuarios/${usuario.id}/editar`} className="text-purple-900 font-medium hover:underline">Editar</Link>
-                            
-                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-slate-800">
+                                        <Link href={`/usuarios/${usuario.id}/editar`}>Editar</Link>
+                                       <button onClick = {()=> handleDeletarUsuario(usuario)}
+                                       className= "font-medium transition-colors text-red-600 hover:text-red-800">
+                                        DELETAR</button>
+                                        <button onClick = {()=> handleAlterarStatusUsuario(usuario)}
+                                       className= {`font-medium transition-colors ${usuario.status ==='BLOQUEADO'
+                                         ?'text-orange-600 hover:text-orange-800' 
+                                         :'text-green-600 hover:text-green-800' }`
+                                         }>
+                                        {usuario.status}</button>
+                                    </td>
                     </tr>
                     ))}
                     {/* nenhum usuario encontrado
