@@ -4,6 +4,7 @@ import com.example.edumanager.DTOs.LoginRequest;
 import com.example.edumanager.DTOs.LoginResponse;
 import com.example.edumanager.repository.UsuarioRepository;
 import com.example.edumanager.services.TokenService;
+import com.example.edumanager.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +19,23 @@ import java.net.HttpURLConnection;
 
 @RestController
 @RequestMapping("/auth")
-@Tag(description = "Autenticação, recuperação de conta/senha do usuario!", name = "Autenticação")
+@Tag(description = "Autenticação controller", name = "Autenticação, recuperação de conta/senha do usuario!")
 public class AuthController {
 
     @Autowired
-    private TokenService tokenService;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 
     @PostMapping("/login")
-    @Operation(description = "Método de login", summary = "Autenticação de usuário")
+    @Operation(description = "Login", summary = "Método responsavel por efetuar o login do usuário!")
     public ResponseEntity<?> login( @RequestBody LoginRequest request){
 
-        var usuarioBanco = usuarioRepository.existsUsuarioByEmailAndSenha(request.email(), request.senha());
+        var resultadoAutenticacaoRetornoToken = usuarioService.validarUsuarioAutenticadoRetornaToken(request);
 
-        if (usuarioRepository.existsUsuarioByEmailAndSenha(request.email(), request.senha())) {
-
-            var token = tokenService.gerarToken(request.email());
-            return  ResponseEntity.ok(new LoginResponse(token));
+        if (resultadoAutenticacaoRetornoToken != null) {
+            return ResponseEntity.ok(resultadoAutenticacaoRetornoToken);
         }
-        return ResponseEntity.status(HttpURLConnection.HTTP_UNAUTHORIZED).build();
+        return ResponseEntity.badRequest().body("Usuário ou senha Invalido!");
+
     }
 
 }

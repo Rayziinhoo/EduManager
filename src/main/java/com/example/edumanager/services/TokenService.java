@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.edumanager.DTOs.LoginRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,24 +19,22 @@ public class TokenService {
     @Value("${spring.secret}")
     private String secret;
 
-    @Value("${spring.expiracao}")
-    private Long expiracao;
+    @Value("${spring.tempo}")
+    private Long tempo;
 
-    @Value("${spring.emissor}")
-    private String emissor;
+    private String emissor = "DEVTEST";
 
-    public String gerarToken(String subject){
+    public String gerarToken(LoginRequest loginResquestDto){
 
-            Algorithm algorithm = Algorithm.HMAC256(secret);
+        Algorithm algorithm = Algorithm.HMAC256(secret);
 
-            String token = JWT.create()
-                    .withIssuer(emissor)
-                    .withSubject(subject)
-                    .withExpiresAt(getDataExpiracao())
-                    .sign(algorithm);
+        String token = JWT.create()
+                .withIssuer(emissor)
+                .withSubject(loginResquestDto.email())
+                .withExpiresAt(this.gerarDataExpiracao())
+                .sign(algorithm);
 
-            return token;
-
+        return token;
     }
 
     public DecodedJWT verificarToken (String token) throws JWTVerificationException {
@@ -46,14 +45,11 @@ public class TokenService {
         return verificador.verify(token);
     }
 
-    private Instant getDataExpiracao() {
-
-        // pegar data atual
+    private Instant gerarDataExpiracao(){
         var dataAtual = LocalDateTime.now();
-        // adicionar ou diminuir tempo da data atual
-        var dataFutura = dataAtual.plusMinutes(expiracao);
+        dataAtual = dataAtual.plusMinutes(tempo);
 
-        // convertendo em Instante
-        return dataFutura.toInstant(ZoneOffset.of("-03:00"));
+        return dataAtual.toInstant(ZoneOffset.of("-03:00"));
+
     }
 }

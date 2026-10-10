@@ -5,6 +5,7 @@ import com.example.edumanager.DTOs.AtualizarStatusRequest;
 import com.example.edumanager.entities.EnumStatusUsuario;
 import com.example.edumanager.entities.Usuario;
 import com.example.edumanager.repository.UsuarioRepository;
+import com.example.edumanager.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.junit.platform.commons.function.Try;
@@ -25,6 +26,9 @@ public class UsuarioController {
     // INJENÇÃO DE INDEPENDENCIA
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     @GetMapping
     @Operation(summary = "Método de consulta de lista de usuários!",
