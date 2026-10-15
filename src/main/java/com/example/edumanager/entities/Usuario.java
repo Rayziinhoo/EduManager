@@ -34,4 +34,7 @@ public class Usuario {
     // springdoc.swagger-ui.tagsSorter=alpha
     // organizar os métodos por ordem alphabetica
    // springdoc.swagger-ui.operationsSorter=alpha
+
+    // dominio fica as regras de negocio
+    // service chama os dominios de forma orquestrada
 }
