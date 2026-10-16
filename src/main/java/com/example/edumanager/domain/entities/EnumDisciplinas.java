@@ -1,0 +1,26 @@
+package com.example.edumanager.domain.entities;
+
+public enum EnumDisciplinas {
+    PORTUGUES,
+    MATEMÁTICA,
+    HISTÓRIA,
+    GEOGRAFIA,
+    CIÊNCIAS,
+    EDUCAÇÃO_FÍSICA,
+    ARTE,
+    INGLES,
+    RELIGIAO,
+    INFORMÁTICA_TECNOLOGIA,
+    ROBÓTICA,
+    ESPANHOL,
+    LIBRAS,
+    MÚSICA,
+    TEATRO,
+    DANÇA,
+    FILOSOFIA,
+    FÍSICA,
+    QUÍMICA,
+    BIOLOGIA,
+    SOCIOLOGIA,
+    LITERATURA_REDAÇÃO,
+}
