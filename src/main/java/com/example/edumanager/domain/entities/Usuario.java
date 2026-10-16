@@ -1,6 +1,7 @@
 package com.example.edumanager.domain.entities;
 
 import com.example.edumanager.application.DTOs.CriarAdminRequest;
+import com.example.edumanager.application.DTOs.UsuarioRequest;
 import com.example.edumanager.domain.valueobject.CPF;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,15 @@ public class Usuario {
         this.setEmail(criarAdminRequest.email());
         this.setRole("ROLE_ADMIN");
 
+    }
+
+    public Usuario(UsuarioRequest usuario) {
+
+        this.setCpf(new CPF(usuario.cpf()));
+        this.setNome(usuario.nome());
+        this.setSenha(usuario.senha());
+        this.setEmail(usuario.email());
+        this.setRole("ROLE_USER");
     }
 
     // SENHAS DO BANCO DE DADOS 01091011 Sen@c2023

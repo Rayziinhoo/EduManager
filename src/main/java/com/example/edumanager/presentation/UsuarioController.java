@@ -2,6 +2,8 @@ package com.example.edumanager.presentation;
 
 import com.example.edumanager.application.DTOs.AtualizarSenhaRequest;
 import com.example.edumanager.application.DTOs.AtualizarStatusRequest;
+import com.example.edumanager.application.DTOs.UsuarioRequest;
+import com.example.edumanager.application.DTOs.UsuarioResponse;
 import com.example.edumanager.domain.entities.EnumStatusUsuario;
 import com.example.edumanager.domain.entities.Usuario;
 import com.example.edumanager.domain.repository.UsuarioRepository;
@@ -56,8 +58,8 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation( summary = "Método de criação de usuários!",
             description = "Método responsável em efetuar a criação de novos usuários!")
-    public ResponseEntity<Usuario> criar ( @RequestBody Usuario usuario){
-        var usuarioBanco = usuarioRepository.save(usuario);
+    public ResponseEntity<UsuarioRequest> criar ( @RequestBody UsuarioRequest usuario){
+        UsuarioResponse usuarioBanco = usuarioService.salvarUsuario(usuario);
         return ResponseEntity.ok(usuarioBanco);
     }
 
