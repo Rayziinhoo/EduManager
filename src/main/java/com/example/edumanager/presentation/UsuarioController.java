@@ -58,9 +58,15 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation( summary = "Método de criação de usuários!",
             description = "Método responsável em efetuar a criação de novos usuários!")
-    public ResponseEntity<UsuarioRequest> criar ( @RequestBody UsuarioRequest usuario){
-        UsuarioResponse usuarioBanco = usuarioService.salvarUsuario(usuario);
-        return ResponseEntity.ok(usuarioBanco);
+    public ResponseEntity<?> criar ( @RequestBody UsuarioRequest usuario){
+
+        try {
+            UsuarioResponse usuarioBanco = usuarioService.salvarUsuario(usuario);
+            return ResponseEntity.ok(usuarioBanco);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 
