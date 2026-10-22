@@ -3,11 +3,16 @@ package com.example.edumanager.domain.entities;
 import com.example.edumanager.application.DTOs.CriarAdminRequest;
 import com.example.edumanager.application.DTOs.UsuarioRequest;
 import com.example.edumanager.domain.valueobject.CPF;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -48,6 +53,21 @@ public class Usuario implements UserDetails {
         this.setSenha(usuario.senha());
         this.setEmail(usuario.email());
         this.setRole("ROLE_USER");
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public @Nullable String getPassword() {
+        return "";
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
     }
 
     // SENHAS DO BANCO DE DADOS 01091011 Sen@c2023
