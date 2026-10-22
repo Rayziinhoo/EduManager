@@ -6,6 +6,10 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.edumanager.application.DTOs.LoginRequest;
+import com.example.edumanager.domain.entities.Token;
+import com.example.edumanager.domain.repository.TokenRepository;
+import com.example.edumanager.domain.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -24,15 +28,27 @@ public class TokenService {
 
     private String emissor = "DEVTEST";
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    TokenRepository tokenRepository;
+
     public String gerarToken(LoginRequest loginResquestDto){
 
         Algorithm algorithm = Algorithm.HMAC256(secret);
+
+        var usuario = usuarioRepository.findAll()
+                .stream().filter(u-> u.getEmail().equals(loginResquestDto.email()))
+                .findFirst().orElse(null);
 
         String token = JWT.create()
                 .withIssuer(emissor)
                 .withSubject(loginResquestDto.email())
                 .withExpiresAt(this.gerarDataExpiracao())
                 .sign(algorithm);
+
+        tokenRepository.save(new Token(token, usuario));
 
         return token;
     }
