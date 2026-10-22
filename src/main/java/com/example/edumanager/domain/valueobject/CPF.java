@@ -2,7 +2,7 @@ package com.example.edumanager.domain.valueobject;
 
 public class CPF {
 
-
+// DDD
     private String cpf;
 
     public CPF(){
