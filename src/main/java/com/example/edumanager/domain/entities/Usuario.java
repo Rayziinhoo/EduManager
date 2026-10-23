@@ -1,6 +1,7 @@
 package com.example.edumanager.domain.entities;
 
 import com.example.edumanager.application.DTOs.CriarAdminRequest;
+import com.example.edumanager.application.DTOs.UsuarioLogado;
 import com.example.edumanager.application.DTOs.UsuarioRequest;
 import com.example.edumanager.domain.valueobject.CPF;
 import jakarta.annotation.Nullable;
@@ -9,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -55,9 +58,13 @@ public class Usuario implements UserDetails {
         this.setRole("ROLE_USER");
     }
 
+    public UsuarioLogado getUsuarioLogado(){
+        return (UsuarioLogado) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority(this.role));
     }
 
     @Override
