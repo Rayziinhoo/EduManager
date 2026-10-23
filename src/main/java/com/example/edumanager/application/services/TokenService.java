@@ -22,10 +22,10 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
-    @Value("${spring.secret}")
+    @Value("${spring.secretkey}")
     private String secret;
 
-    @Value("${spring.tempo}")
+    @Value("${spring.tempo_expiracao}")
     private Long tempo;
 
     private String emissor = "DEVTEST";
