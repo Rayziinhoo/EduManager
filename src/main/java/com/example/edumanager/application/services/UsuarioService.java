@@ -33,6 +33,8 @@ public class UsuarioService {
 
     public List<UsuarioResponse> listarTodosUsuariosTable(){
 
+        // tem algo faltando aqui
+
         return  usuarioRepository.findAll()
                 .stream()
                 .map(UsuarioResponse::new)

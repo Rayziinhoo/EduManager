@@ -23,6 +23,7 @@ import java.util.List;
 @Entity
 public class Usuario implements UserDetails {
 
+    // FK com turma
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,6 +38,11 @@ public class Usuario implements UserDetails {
     private String email;
 
     private String role = "ROLE_USER";
+
+    // modelo de carregamento quando precisar - EAGER - quando não precisar LAZY
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "empresa_id", referencedColumnName = "id")
+    private Empresa empresa;
 
     private EnumStatusUsuario status = EnumStatusUsuario.ATIVO;
 
