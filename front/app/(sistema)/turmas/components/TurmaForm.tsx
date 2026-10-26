@@ -1,6 +1,7 @@
+import { UsuarioFormProps } from "@/app/types/usuario";
 import Link from "next/link";
 
-export default function TurmaForm() {
+export default function TurmaForm({usuarioExistente}:UsuarioFormProps) {
     return (
         <form className="flex flex-col gap-4 bg-white p-8 rounded-2xl shadow-lg border border-blue-900/20 max-w-md">
             <div className="flex flex-col gap-1">

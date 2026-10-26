@@ -13,3 +13,7 @@ export class Turma{
 
     }
 }
+
+export interface TurmaFormProps {
+    turmaExistente?:Turma
+}
