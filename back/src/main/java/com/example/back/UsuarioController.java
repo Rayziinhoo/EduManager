@@ -52,7 +52,6 @@ public class UsuarioController {
 
         int respostaApi = executaMetodoAPI("http://localhost:8080/usuarios/admin",jsonRequest,"POST");
 
-
     if(respostaApi ==200){
         showMessage(Alert.AlertType.INFORMATION,"Usuario salv com sucesso!");
         voltar(event);
@@ -61,12 +60,7 @@ public class UsuarioController {
         showMessage(Alert.AlertType.ERROR,"Erro ao salvar usuário!");
     }
 
-
-
-
-
     }
-
 
     @FXML
     public void voltar(ActionEvent event) throws IOException {
@@ -108,12 +102,6 @@ public class UsuarioController {
 //        var retornoBody = sb.toString();
 
         return connection.getResponseCode();
-
-
-
-
-
-
 
     }
     private void showMessage(Alert.AlertType type, String msg){
