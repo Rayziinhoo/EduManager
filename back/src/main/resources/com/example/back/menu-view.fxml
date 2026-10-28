@@ -3,11 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.back.MenuController">
+<AnchorPane prefHeight="347.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.back.MenuController">
    <children>
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
-      <Button layoutX="125.0" layoutY="103.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Apagar Adimin" />
-      <Button layoutX="125.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Cadastro Admin" />
-      <Button layoutX="125.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Atualizar Admin" />
+      <Button layoutX="33.0" layoutY="282.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
+      <Button layoutX="164.0" layoutY="56.0" mnemonicParsing="false" onAction="#abrirCadastro" prefHeight="25.0" prefWidth="107.0" text="Cadastro Admin" />
+      <Button layoutX="164.0" layoutY="108.0" mnemonicParsing="false" text="Cadastro Turmas" />
+      <Button layoutX="163.0" layoutY="161.0" mnemonicParsing="false" text="Cadastros Alunos" />
+      <Button layoutX="167.0" layoutY="209.0" mnemonicParsing="false" text="Cadastros notas" />
    </children>
 </AnchorPane>

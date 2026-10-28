@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.back.UsuarioController">
+   <children>
+      <Button layoutX="24.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Button layoutX="501.0" layoutY="354.0" mnemonicParsing="false" onAction="#salvarUsuario" text="Salvar" />
+      <Label layoutX="209.0" layoutY="67.0" text="Nome" />
+      <Label layoutX="213.0" layoutY="125.0" text="CPF" />
+      <Label layoutX="209.0" layoutY="183.0" text="Email" />
+      <Label layoutX="209.0" layoutY="242.0" text="Senha" />
+      <TextField fx:id="txtNome" layoutX="209.0" layoutY="90.0" />
+      <TextField fx:id="txtCpf" layoutX="209.0" layoutY="151.0" />
+      <TextField fx:id="txtEmail" layoutX="209.0" layoutY="208.0" />
+      <PasswordField fx:id="txtSenha" layoutX="209.0" layoutY="266.0" />
+   </children>
+</AnchorPane>
