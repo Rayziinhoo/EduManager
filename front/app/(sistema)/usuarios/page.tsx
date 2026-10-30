@@ -117,56 +117,86 @@ export default function Usuarios() {
                         </tr>
                         
                     </thead>
+
                     <tbody className="divide-y divide-blue-900/10">
+
                         {usuarios.map((usuario) => (
+
                             <tr key={usuario.id} className="hover:bg-cyan-50">
+
                                 <td className="px-4 py-3 text-sm text-slate-900">
                                     {usuario.id}
                                 </td>
+
                                 <td className="px-4 py-3 text-sm text-slate-900">
                                     {usuario.nome}
                                 </td>
+
                                 <td className="px-4 py-3 text-sm text-slate-900">
                                     {usuario.cpf}
                                 </td>
+
                                 <td className="px-4 py-3 text-sm text-slate-900">
                                     {usuario.email}
                                 </td>
+
                                 <td className="px-4 py-3 text-sm text-slate-900">
                                     {usuario.status}
                                 </td>
+
                                 <td className="px-6 py-4 text-sm font-medium text-slate-800">
-                                    <Link href={`/usuarios/${usuario.id}/editar`}>Editar</Link>
+
+                                    <Link href={`/usuarios/${usuario.id}/editar`}>
+                                        Editar
+                                    </Link>
+
                                     <p></p>
+
                                     <button onClick={() => handleDeletarUsuario(usuario)}
+
                                         className="font-medium transition-colors text-red-600 hover:text-red-800">
-                                        DELETAR</button>
+                                        DELETAR
+                                    </button>
+
                                     <p></p>
 
                                     <button onClick={() => handleAlterarStatusUsuario(usuario)}
-                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 ease-in-out ${usuario.status === 'BLOQUEADO' ? 'bg-gray-300' : 'bg-green-600'
-                                            }`}>
-                                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ease-in-out ${usuario.status === 'BLOQUEADO' ? 'translate-x-1' : 'translate-x-6'
-                                            }`} />
+
+                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 ease-in-out ${usuario.status === 'BLOQUEADO' ? 'bg-gray-300' : 'bg-green-600'}`}>
+
+                                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ease-in-out ${usuario.status === 'BLOQUEADO' ? 'translate-x-1' : 'translate-x-6'}`} />
+
                                     </button>
+
                                 </td>
+
                             </tr>
+
                         ))}
+
                         {/* nenhum usuario encontrado
-                    colSpan para pular linha */}
+                        colSpan para pular linha */}
                         {usuarios.length === 0 &&
                             (
+
                                 <tr>
+
                                     <td colSpan={6} className="px-6 py-12 text-center text-slate-900 italic">
                                         Nenhum usuario encontrado!
                                     </td>
+
                                 </tr>
                             )
-
                         }
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </div>
-    </div>)
+
+    </div>
+    )
 }
