@@ -42,7 +42,6 @@ export async function atualizarStatusUsuario(usuario:Usuario) :Promise<void> {
     
 }
 
-
 export async function consultaUsuarioPorId(id:number) : Promise<Usuario>{
     const valorUsuarioBack = await api.get<Usuario>('http://localhost:8080/usuarios/'+id);
     return valorUsuarioBack.data;

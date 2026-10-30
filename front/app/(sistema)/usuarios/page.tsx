@@ -14,19 +14,21 @@ export default function Usuarios() {
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
     useEffect(() => {
-        carregarDados();
-    }, []);
 
+        carregarDados();
+
+    }, []);
 
     const carregarDados = async () => {
 
-
         try {
+
             const dados = await buscarListaUsuario();
 
             setUsuarios(dados);
 
         } catch (error) {
+
             alert("Erro ao carregar dados!")
 
         }
@@ -38,11 +40,16 @@ export default function Usuarios() {
         var dadosRetorno = await deletarUsuario(usuario.id || 0);
 
         if (dadosRetorno==200) {
+
             alert("Excluido com sucesso!");
-        } else {
+
+        } 
+        else {
+
             alert("Erro ao excluir o usuario");
 
             return;
+
         }
 
         carregarDados();
@@ -51,45 +58,64 @@ export default function Usuarios() {
 
     const handleAlterarStatusUsuario = async (usuario: Usuario) => {
 
-
        await atualizarStatusUsuario(usuario);
 
         carregarDados();
 
     }
 
+    return (
+    <div className="bg-cyan-50 p-8">
 
-    return (<div className="bg-cyan-50 p-8">
         <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-bold text-purple-900">Gestão de usuários</h1>
-            <Link href="/usuarios/novo" className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">Novo usuário</Link>
+
+            <h1 className="text-2xl font-bold text-purple-900">
+                Gestão de usuários
+            </h1>
+
+            <Link href="/usuarios/novo" 
+            className="bg-purple-900 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors">
+                Novo usuário
+            </Link>
+
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg border border-blue-900/20 overflow-hidden">
+
             <div className="overflow-x-auto">
+
                 <table className="w-full text-left">
+
                     <thead className="bg-cyan-100">
+
                         <tr>
+
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 Código
                             </th>
+
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 Nome
                             </th>
+
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 CPF
                             </th>
+
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 E-mail
                             </th>
+
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 Status
                             </th>
+
                             <th className="px-4 py-3 text-sm font-medium text-purple-900">
                                 Ações
                             </th>
 
                         </tr>
+                        
                     </thead>
                     <tbody className="divide-y divide-blue-900/10">
                         {usuarios.map((usuario) => (
