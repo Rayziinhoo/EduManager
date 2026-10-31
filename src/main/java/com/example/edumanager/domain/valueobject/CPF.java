@@ -68,9 +68,6 @@ public class CPF {
         }
     }
 
-
-
-
     @Override
     public String toString(){
         return cpf.replaceAll("\\D","")

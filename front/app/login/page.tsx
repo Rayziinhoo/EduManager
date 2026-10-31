@@ -1,11 +1,12 @@
 "use client"
 
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { LoginResponse } from "../types/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/slices/authSlice";
 import { buscarUsuarioLogado } from "../services/usuarioService";
+import { loginBack } from "../services/authService";
+import Cookies from "js-cookie";
 
 
 export default function Login() {
@@ -24,10 +25,12 @@ export default function Login() {
 
         const senhaTela = formData.get("senha")?.toString() ?? "";
 
-        var loginResposta = await axios.post<LoginResponse>("http://localhost:8080/auth/login",
-        {email:emailTela,senha:senhaTela})
+        var loginResposta = await loginBack(email:emailTela, senha:senhaTela);
 
-        if(loginResposta.status==200) {
+        if(loginResposta!==null) {
+
+            
+            Cookies.set('token',loginResposta.data.token,{secure: true, expires: 7});
             
             var usuarioLogado = await buscarUsuarioLogado();
 

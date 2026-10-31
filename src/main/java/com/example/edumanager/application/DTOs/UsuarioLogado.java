@@ -4,14 +4,15 @@ import com.example.edumanager.domain.entities.Usuario;
 import com.example.edumanager.domain.valueobject.CPF;
 
 public record UsuarioLogado(Long id, String email, CPF cpf,
-                            java.util.Collection<? extends org.springframework.security.core.GrantedAuthority> authorities) {
+                            java.util.Collection<? extends org.springframework.security.core.GrantedAuthority> authorities , Long empresa_id) {
 
     public UsuarioLogado(Usuario usuario){
         this(
                 usuario.getId(),
                 usuario.getEmail(),
                 usuario.getCpf(),
-                usuario.getAuthorities()
+                usuario.getAuthorities(),
+                usuario.getEmpresa() != null ? usuario.getEmpresa().getId(): 0L
         );
     }
 }

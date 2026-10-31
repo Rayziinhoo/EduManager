@@ -23,7 +23,7 @@ public class SwaggerConfiguration {
                                 .bearerFormat("JWT")
                 ))
                 .info(new Info().title("EduManager")
-                        .version("1.0")
+                        .version("1.0.0")
                         .description("API EduManager"));
 
     }

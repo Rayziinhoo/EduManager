@@ -15,7 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -23,7 +25,8 @@ import java.util.List;
 @Entity
 public class Usuario implements UserDetails {
 
-    // FK com turma
+    // FK com turma - isso é o que preciso fazer
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,12 +42,30 @@ public class Usuario implements UserDetails {
 
     private String role = "ROLE_USER";
 
-    // modelo de carregamento quando precisar - EAGER - quando não precisar LAZY
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "empresa_id", referencedColumnName = "id")
     private Empresa empresa;
 
+    @ManyToMany
+    @JoinTable(
+            name = "tb_matricula",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "curso_id")
+    )
+    private Set<Curso> cursos = new HashSet<>();
+
+    public void matricular(Curso curso){
+        this.cursos.add(curso);
+    }
+
     private EnumStatusUsuario status = EnumStatusUsuario.ATIVO;
+
+    public void setEmail(String email) {
+        if(!email.isEmpty() && !email.contains("@")){
+            throw new IllegalArgumentException("Email Invalido!");
+        }
+        this.email = email;
+    }
 
     public Usuario(CriarAdminRequest criarAdminRequest) {
         this.setCpf(new CPF(criarAdminRequest.cpf()));
@@ -64,10 +85,6 @@ public class Usuario implements UserDetails {
         this.setRole("ROLE_USER");
     }
 
-    public UsuarioLogado getUsuarioLogado(){
-        return (UsuarioLogado) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(this.role));
@@ -83,13 +100,5 @@ public class Usuario implements UserDetails {
         return "";
     }
 
-    // SENHAS DO BANCO DE DADOS 01091011 Sen@c2023
 
-    // organizar os controller por ordem alphabetica
-    // springdoc.swagger-ui.tagsSorter=alpha
-    // organizar os métodos por ordem alphabetica
-   // springdoc.swagger-ui.operationsSorter=alpha
-
-    // dominio fica as regras de negocio
-    // service chama os dominios de forma orquestrada
 }
