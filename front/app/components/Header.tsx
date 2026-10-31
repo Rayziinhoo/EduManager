@@ -1,6 +1,14 @@
+'use client'
 import Link from "next/link";
+import { store } from "../redux/store";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/slices/authSlice";
 
 export default function Header () {
+
+    // fui no elemento pai e agora o elemento pai via consultar 
+    const usuario = store.getState().auth.usuario;
+    const dispatch = useDispatch;
 
     return(
         <header className="bg-white border-b border-blue-900/20 shadow-sm">
@@ -32,12 +40,15 @@ export default function Header () {
                 </div>
 
                 <span className="text-sm font-medium text-purple-900 font-semibold"> 
-                    Bem vindo!!
+                    {usuario?.nome.toLocaleUpperCase() || "Usuário não identificado!"}
                 </span>
 
                 <Link href="/login">  
 
-                    <button className="px-4 py-2 bg-orange-800 hover:bg-orange-900 text-white text-sm font-semibold rounded-lg transition-colors">
+                    <button onClick={() =>{
+                        // dispatch(logout());
+                    }}
+                    className="px-4 py-2 bg-orange-800 hover:bg-orange-900 text-white text-sm font-semibold rounded-lg transition-colors">
                         Sair
                     </button>
 

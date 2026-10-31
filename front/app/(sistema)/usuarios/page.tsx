@@ -13,7 +13,7 @@ export default function Usuarios() {
 
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
-    useEffect(() => {
+        useEffect(() => {
 
         carregarDados();
 

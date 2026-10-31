@@ -3,11 +3,16 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { LoginResponse } from "../types/auth";
-import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/slices/authSlice";
+import { buscarUsuarioLogado } from "../services/usuarioService";
+
 
 export default function Login() {
     
     const router = useRouter();
+
+    const dispatch = useDispatch();
  
     const handlerLogin = async(formData: FormData) => {
 
@@ -23,8 +28,11 @@ export default function Login() {
         {email:emailTela,senha:senhaTela})
 
         if(loginResposta.status==200) {
+            
+            var usuarioLogado = await buscarUsuarioLogado();
 
-            Cookies.set('token', loginResposta.data.token,{secure: true, expires: 7})
+            dispatch(login({token: loginResposta.data.token, usuario: {...usuarioLogado}}));
+
             router.push("/home")
 
         }else{
