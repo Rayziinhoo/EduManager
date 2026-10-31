@@ -8,7 +8,7 @@ export default function Header () {
 
     // fui no elemento pai e agora o elemento pai via consultar 
     const usuario = store.getState().auth.usuario;
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     return(
         <header className="bg-white border-b border-blue-900/20 shadow-sm">
@@ -41,18 +41,14 @@ export default function Header () {
 
                 <span className="text-sm font-medium text-purple-900 font-semibold"> 
                     {usuario?.nome.toLocaleUpperCase() || "Usuário não identificado!"}
-                </span>
-
-                <Link href="/login">  
+                </span> 
 
                     <button onClick={() =>{
-                        // dispatch(logout());
+                        dispatch(logout());
                     }}
                     className="px-4 py-2 bg-orange-800 hover:bg-orange-900 text-white text-sm font-semibold rounded-lg transition-colors">
                         Sair
                     </button>
-
-                </Link>
 
             </div>
 

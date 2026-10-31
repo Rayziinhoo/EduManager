@@ -8,7 +8,7 @@ const tokenRecover = Cookies.get('token');
 
 const initialState: AuthState = {
 
-    usuario: null,
+    usuario: usuarioRecover ? JSON.parse(usuarioRecover) as Usuario : null,
 
     token : tokenRecover ?? ""
 
@@ -33,9 +33,9 @@ const authSlice = createSlice({
             },
             logout:(state) => {
 
-                Cookies.remove('token')
+                Cookies.remove('token');
 
-                Cookies.remove('usuario')
+                Cookies.remove('usuario');
 
             state.token = "";
 

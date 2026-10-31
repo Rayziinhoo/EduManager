@@ -31,7 +31,10 @@ export default function Login() {
             
             var usuarioLogado = await buscarUsuarioLogado();
 
-            dispatch(login({token: loginResposta.data.token, usuario: {...usuarioLogado}}));
+            dispatch(login(
+                {token: loginResposta.data.token, usuario: {...usuarioLogado}
+                }
+            ));
 
             router.push("/home")
 
@@ -69,7 +72,7 @@ export default function Login() {
                     <div className="flex flex-col gap-1">
 
                         <label className="text-sm font-medium text-purple-900">
-                            E-MAIL
+                            E-mail
                         </label>
 
                         <input name="email" 
@@ -82,7 +85,7 @@ export default function Login() {
                     <div className="flex flex-col gap-1">
 
                         <label className="text-sm font-medium text-purple-900">
-                            SENHA
+                            senha
                         </label>
 
                         <input name="senha" 

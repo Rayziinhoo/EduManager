@@ -8,7 +8,7 @@ export const store = configureStore({
         auth : authReducer
     }
     
-})
+});
 
 // vire um estado fortamente tipado
 // se perguntar é pq quer que eu rode
