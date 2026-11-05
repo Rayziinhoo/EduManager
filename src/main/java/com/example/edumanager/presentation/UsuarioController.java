@@ -71,23 +71,6 @@ public class UsuarioController {
     }
 
 
-   /* @PatchMapping("/{id}/senha")
-    @Operation(summary = "Método de atualização de senha do usuário!",
-            description = "Método responsável por alterar a senha do usuário!")
-    public ResponseEntity<Void> atualizarSenha(@PathVariable Long id, @RequestBody AtualizarSenhaRequest senhaRequest) {
-
-        Usuario usuarioBanco = usuarioRepository.findById(id).orElse(null);
-        if ( usuarioBanco != null ) {
-            usuarioBanco.setSenha(String.valueOf(senhaRequest.senha()));
-            usuarioRepository.save(usuarioBanco);
-
-
-            return ResponseEntity.ok().build();
-
-        }
-        return ResponseEntity.notFound().build();
-    }*/
-
     @PatchMapping("/{id}/status")
     @Operation(summary = "Método de atualização do status do usuário!",
             description = "Método responsável por alterar o status do usuário!")
