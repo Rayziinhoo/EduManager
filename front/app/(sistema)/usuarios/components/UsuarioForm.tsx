@@ -75,7 +75,7 @@ export default function UsuarioForm({usuarioExistente}:UsuarioFormProps) {
                 value={usuario.nome}
                 onChange={(e)=> handlerChange('nome', e.target.value)}
                 required
-                placeholder="opa"
+                placeholder="Rayrison Riberio Estacio"
                 className="border border-cyan-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400">
                 </input>
             </div>
