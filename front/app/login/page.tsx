@@ -1,7 +1,6 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { LoginResponse } from "../types/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/slices/authSlice";
 import { buscarUsuarioLogado } from "../services/usuarioService";
@@ -18,40 +17,31 @@ export default function Login() {
     const handlerLogin = async(formData: FormData) => {
 
         try {
+            debugger;
+            const emailTela = formData.get("email")?.toString() ?? "";
+            const senhaTela = formData.get("senha")?.toString() ?? "";
 
-        debugger;
+            var loginResposta = await loginBack(emailTela,senhaTela);
 
-        const emailTela = formData.get("email")?.toString() ?? "";
+            if(loginResposta != null){
+                Cookies.set('token',loginResposta.token,{secure: true, expires: 7});
+          
+                var usuarioLogado = await buscarUsuarioLogado();
 
-        const senhaTela = formData.get("senha")?.toString() ?? "";
-
-        var loginResposta = await loginBack(email:emailTela, senha:senhaTela);
-
-        if(loginResposta!==null) {
-
-            
-            Cookies.set('token',loginResposta.data.token,{secure: true, expires: 7});
-            
-            var usuarioLogado = await buscarUsuarioLogado();
-
-            dispatch(login(
-                {token: loginResposta.data.token, usuario: {...usuarioLogado}
+               dispatch(login(
+                {
+                    token:loginResposta.token,
+                    usuario:{...usuarioLogado}
                 }
-            ));
-
-            router.push("/home")
-
-        }else{
-
-        alert("Login ou senha Inválido")
-
+                ));
+                router.push("/home")
+            }else{
+                alert("Login ou senha Invalido!")
+            }
+        } catch (error) {
+            alert("Login ou senha Invalido!")
+        }
     }
-    }catch(error) {
-
-        alert("Login ou senha Inválido")
-
-    }
-}
 
     return(
         <div className="min-h-screen flex items-center justify-center bg-cyan-50">
