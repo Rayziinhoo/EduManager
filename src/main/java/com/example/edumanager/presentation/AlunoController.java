@@ -63,6 +63,7 @@ public class AlunoController {
                 alunoBanco.setMatricula(aluno.getMatricula());
                 alunoBanco.setDataMatricula(aluno.getDataMatricula());
                 alunoBanco.setSenha(aluno.getSenha());
+
                 alunoRepository.save(alunoBanco);
 
                 return ResponseEntity.ok().build();
