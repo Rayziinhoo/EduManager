@@ -14,11 +14,11 @@ import java.net.http.HttpResponse;
 @Component
 public class ViaCepExternalRepository implements IViaCepExternalRepository {
 
-    private final HttpClient httpClient = HttpClient.newBuilder().connectTimeout()
+   // private final HttpClient httpClient = HttpClient.newBuilder().connectTimeout()
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @Async
+   /* @Async
     public ViaCepResponse buscarEnderecoViaCepPorCep(String cep) {
         var url = "viacep.com.br/ws/" +cep.replaceAll("[^0-9]","")+ "/json/";
 
@@ -41,6 +41,6 @@ public class ViaCepExternalRepository implements IViaCepExternalRepository {
 
         }
 
-    }
+    }*/
 
 }

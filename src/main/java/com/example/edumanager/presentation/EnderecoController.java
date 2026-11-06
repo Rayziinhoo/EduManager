@@ -16,10 +16,10 @@ public class EnderecoController {
     @Autowired
     private EnderecoService enderecoService;
 
-    @GetMapping("/{cep}")
+   /* @GetMapping("/{cep}")
     public ResponseEntity<EnderecoResponse> buscarEndereco(@PathVariable String cep) {
         return new ResponseEntity.ok(enderecoService.BuscarEndereco(cep));
-    }
+    }*/
 
 
 }
