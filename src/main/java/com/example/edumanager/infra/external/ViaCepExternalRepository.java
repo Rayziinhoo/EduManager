@@ -10,22 +10,23 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 
 @Component
 public class ViaCepExternalRepository implements IViaCepExternalRepository {
 
-   // private final HttpClient httpClient = HttpClient.newBuilder().connectTimeout()
+   private final HttpClient httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(10)).build();
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-   /* @Async
+   @Async
     public ViaCepResponse buscarEnderecoViaCepPorCep(String cep) {
         var url = "viacep.com.br/ws/" +cep.replaceAll("[^0-9]","")+ "/json/";
 
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandler.ofString());
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200){
                 ViaCepResponse viaCepResponse = objectMapper.readValue(response.body(), ViaCepResponse.class);
@@ -41,6 +42,6 @@ public class ViaCepExternalRepository implements IViaCepExternalRepository {
 
         }
 
-    }*/
+    }
 
 }
